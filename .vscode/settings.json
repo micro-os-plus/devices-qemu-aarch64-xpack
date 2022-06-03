@@ -1,6 +1,48 @@
 {
+  "editor.rulers": [
+    80
+  ],
   "cSpell.ignoreWords": [
+    "CPSR",
+    "DIAG",
+    "FPEN",
+    "Ionescu",
+    "Lcpu",
+    "Lcpu0",
+    "Liviu",
+    "MPIDR",
+    "Warith",
+    "Wconversion",
+    "Wpadded",
+    "Wpedantic",
+    "Wpointer",
+    "Wsign",
+    "Wswitch",
+    "Wunused",
+    "Wuseless",
+    "Wvolatile",
+    "adrp",
+    "blinky",
+    "buildtype",
+    "cmake",
+    "cmsis",
     "cortexa",
-    "xpack"
-  ]
+    "cortexm",
+    "cpacr",
+    "ctest",
+    "elif",
+    "globl",
+    "mkdir",
+    "mpidr_el1",
+    "npmignore",
+    "npmjs",
+    "postversion",
+    "progbits",
+    "subdir",
+    "vbar",
+    "virt",
+    "xpack",
+    "xpacks"
+  ],
+  "cmake.configureOnOpen": false
 }
