@@ -1,2 +1,4 @@
 # devices-qemu-cortexa-xpack
-A source library xPack with the µOS++ QEMU Cortex-A devices support
+
+This project does not use the `master` branch, please
+switch to the `xpack` branch to get the project files.
