@@ -101,3 +101,11 @@ When the release is considered stable, promote it as `latest`:
 - `npm dist-tag ls @micro-os-plus/devices-qemu-cortexa`
 - `npm dist-tag add @micro-os-plus/devices-qemu-cortexa@1.0.0 latest`
 - `npm dist-tag ls @micro-os-plus/devices-qemu-cortexa`
+
+## Share on Twitter
+
+- in a separate browser windows, open [TweetDeck](https://tweetdeck.twitter.com/)
+- using the `@micro_os_plus` account
+- paste the release name like **µOS++ device-qemu-cortexa v1.0.0 released**
+- paste the link to the Web page release
+- click the **Tweet** button
