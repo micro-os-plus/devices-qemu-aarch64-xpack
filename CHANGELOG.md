@@ -6,7 +6,7 @@ Please check
 [GitHub](https://github.com/micro-os-plus/devices-qemu-cortexa-xpack/issues/)
 and close existing issues and pull requests.
 
-## 2022-06-03
+## 2022-06-04
 
 * v1.0.0 released
 
