@@ -114,7 +114,7 @@ To integrate this package into user projects, consider the following details:
 
 #### Include folders
 
-The following folder should be used during the build:
+The following folders should be passed to the compiler during the build:
 
 - `include`
 
@@ -124,9 +124,9 @@ The header files to be included in user project are:
 #include <micro-os-plus/device.h>
 ```
 
-#### Source folders
+#### Source files
 
-The source files to be added are:
+The source files to be added to user projects are:
 
 - `src/boot.S`
 
