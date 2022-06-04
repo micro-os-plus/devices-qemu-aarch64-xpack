@@ -24,8 +24,7 @@ extern "C"
 {
 #endif /* __cplusplus */
 
-  // ----------------------------------------------------------------------------
-
+  // --------------------------------------------------------------------------
 
 #if defined(DEVICE_QEMU_CORTEX_A72)
 
@@ -37,12 +36,12 @@ typedef enum
   XXX_IRQn = -1,
 } IRQn_Type;
 
-#define __CORTEX_A                5
-#define __CA_REV                  0x0000U
-#define __FPU_PRESENT             1U
-#define __GIC_PRESENT             1U
-#define __TIM_PRESENT             1U
-#define __L2C_PRESENT             0U
+#define __CORTEX_A 5
+#define __CA_REV 0x0000U
+#define __FPU_PRESENT 1U
+#define __GIC_PRESENT 1U
+#define __TIM_PRESENT 1U
+#define __L2C_PRESENT 0U
 
 // TODO
 #define GIC_DISTRIBUTOR_BASE 0xF000
@@ -79,8 +78,6 @@ typedef enum
 #error "Device not supported"
 #endif
 
-
-
   extern uint32_t SystemCoreClock; /*!< System Clock Frequency (Core Clock) */
 
   extern void
@@ -88,7 +85,7 @@ typedef enum
   extern void
   SystemCoreClockUpdate (void);
 
-  // ----------------------------------------------------------------------------
+  // --------------------------------------------------------------------------
 
 #ifdef __cplusplus
 }
