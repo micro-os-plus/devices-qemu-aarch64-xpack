@@ -174,6 +174,8 @@ backwards incompatible changes are introduced to the public API.
 The incompatible changes, in reverse chronological order,
 are:
 
+- v2.x: interrupt-vectors & exception-handlers moved here; Reset_Handler
+  renamed with capital letters
 - v1.x: initial release
 
 ## License
