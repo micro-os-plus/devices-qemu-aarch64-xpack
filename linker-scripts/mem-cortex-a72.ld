@@ -13,7 +13,8 @@
 /*
  * Memory Spaces Definitions for the QEMU virt board with Cortex-A72.
  * - https://www.qemu.org/docs/master/system/arm/virt.html
- * The sizes are not documented and were arbitrarily set to 16 MB.
+ * The sizes are not documented, but the semihosting heap starts at 0x44000000,
+ * and empirically the initial stack must be set below this limit.
  *
  *   RAM.ORIGIN: starting address of RAM bank 0
  *   RAM.LENGTH: length of RAM bank 0
@@ -24,7 +25,7 @@
 
 MEMORY
 {
-  FLASH (xr) : ORIGIN = 0x00000000, LENGTH = 16M
-  RAM (xrw) : ORIGIN = 0x40000000, LENGTH = 16M
+  RAM (xrw) : ORIGIN = 0x40000000, LENGTH = 0x04000000 /* 64M */
+  /* Semihosting SYS_HEAPINFO returns it. */
+   HEAP (xrw) : ORIGIN = 0x44000000, LENGTH = 0x04000000 /* 64M */
 }
-
