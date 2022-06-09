@@ -58,9 +58,9 @@ target_include_directories(micro-os-plus-devices-qemu-cortexa-interface INTERFAC
 )
 
 target_sources(micro-os-plus-devices-qemu-cortexa-interface INTERFACE
-  "src/boot.S"
-  "src/system_cortexa.c"
-  "src/vectors_cortexa.c"
+  "src/reset-handler.S"
+  "src/interrupt-vectors.S"
+  "src/exception-handlers.cpp"
 )
 
 target_compile_definitions(micro-os-plus-devices-qemu-cortexa-interface INTERFACE
@@ -73,10 +73,10 @@ target_compile_options(micro-os-plus-devices-qemu-cortexa-interface INTERFACE
 
 target_link_libraries(micro-os-plus-devices-qemu-cortexa-interface INTERFACE
   # Dependencies
-  xpack-3rd-party::arm-cmsis-core-a
+  # xpack-3rd-party::arm-cmsis-core-a
   micro-os-plus::devices-cortexa
   # TODO: check if really needed!
-  micro-os-plus::startup
+  # micro-os-plus::startup
 )
 
 if (COMMAND xpack_display_target_lists)

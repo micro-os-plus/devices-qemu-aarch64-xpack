@@ -33,17 +33,18 @@ micro_os_plus_devices_qemu_cortexa_dependency = declare_dependency(
     'include',
   ),
   sources: files(
-    'src/boot.S',
-    'src/system_cortexa.c',
-    'src/vectors_cortexa.c',
+    'src/reset-handler.S',
+    'src/interrupt-vectors.S',
+
+    'src/exception-handlers.cpp',
   ),
   compile_args: [
     '-D' + xpack_device_compile_definition
   ],
   dependencies: [
-    xpack_3rd_party_arm_cmsis_core_m_dependency,
+    # xpack_3rd_party_arm_cmsis_core_m_dependency,
     micro_os_plus_devices_cortexa_dependency,
-    micro_os_plus_startup_dependency,
+    # micro_os_plus_startup_dependency,
   ],
 )
 
