@@ -8,7 +8,7 @@ and close existing issues and pull requests.
 
 ## 2022-06-09
 
-* v2.0.0 prepared
+* v2.0.0 released
 * 26d3c03 device.h: disable CMSIS defs
 * 3582321 linker-scripts: RAM is 64M
 * 583586e interrupt-vectors & exception-handlers moved here
