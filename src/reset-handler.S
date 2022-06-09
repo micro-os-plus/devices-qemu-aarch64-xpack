@@ -16,14 +16,14 @@
 // written in assembly.
 
 // In `architecture-cortexa/linker-scripts/sections-flash.ld` there is an
-// `ENTRY(reset_handler)` to tell QEMU where to start.
+// `ENTRY(Reset_Handler)` to tell QEMU where to start.
 
     .section .after_vectors,"awx",%progbits
 
     .align 2
-    .globl reset_handler
-    .type reset_handler, %function
-reset_handler:
+    .globl Reset_Handler
+    .type Reset_Handler, %function
+Reset_Handler:
 
 #if defined(__ARM_ARCH_8A)
 
@@ -41,18 +41,23 @@ reset_handler:
 
 .Lcpu0_initialize:
     // Set vector base.
-    ldr   x1, = _interrupt_vectors
-    msr   vbar_el1, x1
+    ldr   x0, = _interrupt_vectors
+    msr   vbar_el1, x0
 
     // Enable Advanced SIMD and floating-point.
-    mrs   x1, cpacr_el1 // Architectural Feature Access Control Register.
-    mov   x0, #(3 << 20) // FPEN=0b11 do not trap in EL0 and EL1.
-    orr   x0, x1, x0
+    mrs   x0, cpacr_el1 // Architectural Feature Access Control Register.
+    orr   x0, x0, #(3 << 20) // FPEN=0b11 do not trap in EL0 and EL1.
     msr   cpacr_el1, x0
+
+    // Disable MMU to ensure phys mem addresses are used.
+    mrs    x0, sctlr_el1
+    bic    x0, x0, #(1<<0)
+    msr    sctlr_el1, x0
+    isb
 
     // Configure stack.
     // Address of 4KB page at a PC-relative offset.
-    adrp   x0, _initial_main_stack_pointer
+    adrp   x0, __stack
     mov    sp, x0
 
     bl     _start
@@ -74,7 +79,7 @@ reset_handler:
     b       .Lcpu_sleep
 
 .Lcpu0_initialize:
-    ldr     r0, =_initial_main_stack_pointer
+    ldr     r0, =__stack
     // Enter each mode in turn and set up the stack pointer
 #if 0
     MSR     CPSR_c, #Mode_FIQ:OR:I_Bit:OR:F_Bit
