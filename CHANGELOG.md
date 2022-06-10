@@ -6,6 +6,11 @@ Please check
 [GitHub](https://github.com/micro-os-plus/devices-qemu-cortexa-xpack/issues/)
 and close existing issues and pull requests.
 
+## 2022-06-10
+
+* v2.1.0 released
+* 6a61b55 remove deps on devices-cortexa
+
 ## 2022-06-09
 
 * v2.0.0 released
