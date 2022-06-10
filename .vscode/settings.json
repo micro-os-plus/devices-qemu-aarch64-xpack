@@ -30,6 +30,7 @@
     "cortexm",
     "cpacr",
     "ctest",
+    "deps",
     "elif",
     "globl",
     "mkdir",
