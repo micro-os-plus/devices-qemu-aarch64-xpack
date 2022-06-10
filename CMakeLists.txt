@@ -74,7 +74,7 @@ target_compile_options(micro-os-plus-devices-qemu-cortexa-interface INTERFACE
 target_link_libraries(micro-os-plus-devices-qemu-cortexa-interface INTERFACE
   # Dependencies
   # xpack-3rd-party::arm-cmsis-core-a
-  micro-os-plus::devices-cortexa
+  # micro-os-plus::devices-cortexa
   # TODO: check if really needed!
   # micro-os-plus::startup
 )

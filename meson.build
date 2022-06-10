@@ -43,7 +43,7 @@ micro_os_plus_devices_qemu_cortexa_dependency = declare_dependency(
   ],
   dependencies: [
     # xpack_3rd_party_arm_cmsis_core_m_dependency,
-    micro_os_plus_devices_cortexa_dependency,
+    # micro_os_plus_devices_cortexa_dependency,
     # micro_os_plus_startup_dependency,
   ],
 )
