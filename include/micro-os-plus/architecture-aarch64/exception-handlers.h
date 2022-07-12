@@ -10,8 +10,8 @@
  * be obtained from https://opensource.org/licenses/MIT/.
  */
 
-#ifndef MICRO_OS_PLUS_ARCHITECTURE_CORTEXA_EXCEPTION_HANDLERS_H_
-#define MICRO_OS_PLUS_ARCHITECTURE_CORTEXA_EXCEPTION_HANDLERS_H_
+#ifndef MICRO_OS_PLUS_ARCHITECTURE_AARCH64_EXCEPTION_HANDLERS_H_
+#define MICRO_OS_PLUS_ARCHITECTURE_AARCH64_EXCEPTION_HANDLERS_H_
 
 // ----------------------------------------------------------------------------
 
@@ -123,6 +123,6 @@ extern "C"
 
 // ----------------------------------------------------------------------------
 
-#endif // MICRO_OS_PLUS_ARCHITECTURE_CORTEXA_EXCEPTION_HANDLERS_H_
+#endif // MICRO_OS_PLUS_ARCHITECTURE_AARCH64_EXCEPTION_HANDLERS_H_
 
 // ----------------------------------------------------------------------------

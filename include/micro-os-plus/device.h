@@ -70,10 +70,6 @@ typedef enum
 
 #endif
 
-#elif defined(DEVICE_QEMU_CORTEX_A15)
-
-// TODO
-
 #else
 #error "Device not supported"
 #endif

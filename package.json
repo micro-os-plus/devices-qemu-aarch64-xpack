@@ -1,7 +1,7 @@
 {
-  "name": "@micro-os-plus/devices-qemu-cortexa",
+  "name": "@micro-os-plus/devices-qemu-aarch64",
   "version": "2.1.0",
-  "description": "A source library xPack with the µOS++ QEMU Cortex-A devices support",
+  "description": "A source library xPack with the µOS++ QEMU AArch64 devices support",
   "main": "",
   "scripts": {
     "npm-install": "npm install",
@@ -13,17 +13,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/micro-os-plus/devices-qemu-cortexa-xpack.git/"
+    "url": "https://github.com/micro-os-plus/devices-qemu-aarch64-xpack.git/"
   },
   "bugs": {
-    "url": "https://github.com/micro-os-plus/devices-qemu-cortexa-xpack/issues/"
+    "url": "https://github.com/micro-os-plus/devices-qemu-aarch64-xpack/issues/"
   },
-  "homepage": "https://github.com/micro-os-plus/devices-qemu-cortexa-xpack/",
+  "homepage": "https://github.com/micro-os-plus/devices-qemu-aarch64-xpack/",
   "keywords": [
     "xpack",
     "c++",
     "qemu",
     "cortex-a",
+    "aarch64",
     "micro-os-plus"
   ],
   "author": {

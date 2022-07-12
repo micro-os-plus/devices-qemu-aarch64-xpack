@@ -21,6 +21,7 @@
     "Wunused",
     "Wuseless",
     "Wvolatile",
+    "aarch64",
     "adrp",
     "blinky",
     "buildtype",

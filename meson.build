@@ -14,21 +14,21 @@
 
 # This file is intended to be consumed by applications with:
 #
-# `subdir('xpacks/micro-os-plus-devices-qemu-cortexa')`
+# `subdir('xpacks/micro-os-plus-devices-qemu-aarch64')`
 #
 # The result is a dependency that can be referred as:
 #
-# `dependencies: [micro_os_plus_devices_qemu_cortexa_dependency],`
+# `dependencies: [micro_os_plus_devices_qemu_aarch64_dependency],`
 
 # Note: the meson configuration is provided only as a proof of concept,
 # for production it might need some refinements.
 
 # -----------------------------------------------------------------------------
 
-message('Processing xPack @micro-os-plus/devices-qemu-cortexa...')
+message('Processing xPack @micro-os-plus/devices-qemu-aarch64...')
 
 # https://mesonbuild.com/Reference-manual_functions.html#declare_dependency
-micro_os_plus_devices_qemu_cortexa_dependency = declare_dependency(
+micro_os_plus_devices_qemu_aarch64_dependency = declare_dependency(
   include_directories: include_directories(
     'include',
   ),
@@ -49,9 +49,10 @@ micro_os_plus_devices_qemu_cortexa_dependency = declare_dependency(
 )
 
 message('+ -I include')
-message('+ src/system_cortexa.c')
-message('+ src/vectors_cortexa.c')
+message('+ src/reset-handler.S')
+message('+ src/interrupt-vectors.S')
+message('+ src/exception-handlers.cpp')
 message('+ -D ' + xpack_device_compile_definition)
-message('> micro_os_plus_devices_qemu_cortexa_dependency')
+message('> micro_os_plus_devices_qemu_aarch64_dependency')
 
 # -----------------------------------------------------------------------------

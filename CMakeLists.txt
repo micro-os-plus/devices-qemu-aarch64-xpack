@@ -14,11 +14,11 @@
 
 # This file is intended to be consumed by applications with:
 #
-# `add_subdirectory("xpacks/micro-os-plus-devices-qemu-cortexa")`
+# `add_subdirectory("xpacks/micro-os-plus-devices-qemu-aarch64")`
 #
 # The result is an interface library that can be added to the linker with:
 #
-# `target_link_libraries(your-target PUBLIC micro-os-plus::devices-qemu-cortexa)`
+# `target_link_libraries(your-target PUBLIC micro-os-plus::devices-qemu-aarch64)`
 
 # -----------------------------------------------------------------------------
 ## Preamble ##
@@ -27,8 +27,8 @@
 cmake_minimum_required(VERSION 3.20)
 
 project(
-  micro-os-plus-devices-qemu-cortexa
-  DESCRIPTION "µOS++ QEMU Cortexa-A devices"
+  micro-os-plus-devices-qemu-aarch64
+  DESCRIPTION "µOS++ QEMU AArch64 devices"
 )
 
 if(COMMAND xpack_get_package_name_and_version)
@@ -37,7 +37,7 @@ if(COMMAND xpack_get_package_name_and_version)
 endif()
 
 if(NOT xpack_device_compile_definition)
-  message(FATAL_ERROR "Define 'xpack_device_compile_definition' globally before including device-qemu-cortexa")
+  message(FATAL_ERROR "Define 'xpack_device_compile_definition' globally before including device-qemu-aarch64")
 endif()
 
 # -----------------------------------------------------------------------------
@@ -48,30 +48,30 @@ endif()
 # INTERFACE: usage definitions, passed up to targets linking to it
 # PUBLIC: both
 
-add_library(micro-os-plus-devices-qemu-cortexa-interface INTERFACE EXCLUDE_FROM_ALL)
+add_library(micro-os-plus-devices-qemu-aarch64-interface INTERFACE EXCLUDE_FROM_ALL)
 
 # -----------------------------------------------------------------------------
 # Target settings.
 
-target_include_directories(micro-os-plus-devices-qemu-cortexa-interface INTERFACE
+target_include_directories(micro-os-plus-devices-qemu-aarch64-interface INTERFACE
   "include"
 )
 
-target_sources(micro-os-plus-devices-qemu-cortexa-interface INTERFACE
+target_sources(micro-os-plus-devices-qemu-aarch64-interface INTERFACE
   "src/reset-handler.S"
   "src/interrupt-vectors.S"
   "src/exception-handlers.cpp"
 )
 
-target_compile_definitions(micro-os-plus-devices-qemu-cortexa-interface INTERFACE
+target_compile_definitions(micro-os-plus-devices-qemu-aarch64-interface INTERFACE
   "${xpack_device_compile_definition}"
 )
 
-target_compile_options(micro-os-plus-devices-qemu-cortexa-interface INTERFACE
+target_compile_options(micro-os-plus-devices-qemu-aarch64-interface INTERFACE
   # None.
 )
 
-target_link_libraries(micro-os-plus-devices-qemu-cortexa-interface INTERFACE
+target_link_libraries(micro-os-plus-devices-qemu-aarch64-interface INTERFACE
   # Dependencies
   # xpack-3rd-party::arm-cmsis-core-a
   # micro-os-plus::devices-cortexa
@@ -80,17 +80,17 @@ target_link_libraries(micro-os-plus-devices-qemu-cortexa-interface INTERFACE
 )
 
 if (COMMAND xpack_display_target_lists)
-  xpack_display_target_lists(micro-os-plus-devices-qemu-cortexa-interface)
+  xpack_display_target_lists(micro-os-plus-devices-qemu-aarch64-interface)
 endif()
 
 # -----------------------------------------------------------------------------
 # Aliases.
 
 # https://cmake.org/cmake/help/v3.20/command/add_library.html#alias-libraries
-add_library(micro-os-plus::devices-qemu-cortexa ALIAS micro-os-plus-devices-qemu-cortexa-interface)
-message(VERBOSE "> micro-os-plus::devices-qemu-cortexa -> micro-os-plus-devices-qemu-cortexa-interface")
+add_library(micro-os-plus::devices-qemu-aarch64 ALIAS micro-os-plus-devices-qemu-aarch64-interface)
+message(VERBOSE "> micro-os-plus::devices-qemu-aarch64 -> micro-os-plus-devices-qemu-aarch64-interface")
 
-add_library(micro-os-plus::device ALIAS micro-os-plus-devices-qemu-cortexa-interface)
-message(VERBOSE "> micro-os-plus::device -> micro-os-plus-devices-qemu-cortexa-interface")
+add_library(micro-os-plus::device ALIAS micro-os-plus-devices-qemu-aarch64-interface)
+message(VERBOSE "> micro-os-plus::device -> micro-os-plus-devices-qemu-aarch64-interface")
 
 # -----------------------------------------------------------------------------

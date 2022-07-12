@@ -3,8 +3,10 @@
 Releases in reverse chronological order.
 
 Please check
-[GitHub](https://github.com/micro-os-plus/devices-qemu-cortexa-xpack/issues/)
+[GitHub](https://github.com/micro-os-plus/devices-qemu-aarch64-xpack/issues/)
 and close existing issues and pull requests.
+
+* copy/paste devices-qemu-cortexa-xpack
 
 ## 2022-06-10
 

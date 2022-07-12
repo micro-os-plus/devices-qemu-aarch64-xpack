@@ -10,7 +10,11 @@
  * be obtained from https://opensource.org/licenses/MIT/.
  */
 
-# -----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+
+#if defined(__aarch64__)
+
+// ----------------------------------------------------------------------------
 
 // AArch64 GCC does not support naked functions, so everything should be
 // written in assembly.
@@ -24,8 +28,6 @@
     .globl Reset_Handler
     .type Reset_Handler, %function
 Reset_Handler:
-
-#if defined(__ARM_ARCH_8A)
 
     // Only CPU 0 performs initialization. Other CPUs go into WFI
     // to do this, first work out which CPU this is
@@ -62,42 +64,8 @@ Reset_Handler:
 
     bl     _start
 
-#elif defined(__ARM_ARCH_7A__)
+// ----------------------------------------------------------------------------
 
-    // DEN0013D_cortex_a_series_PG.pdf
-    // 13.1 Booting a bare-metal system
+#endif // defined(__aarch64__)
 
-    // Only CPU 0 performs the initializations. All other CPUs go into WFI.
-    // To do this, first work out which CPU this is by reading MPIDR.
-    mrc     p15, 0, r1, c0, c0, 5 // Read Multiprocessor Affinity Register
-    and     r1, r1, #0x3 // Extract CPU ID bits
-    cmp     r1, #0
-    beq     .Lcpu0_initialize // If we’re on CPU0 goto the start.
-
-.Lcpu_sleep:
-    wfi     // Other CPUs are left sleeping.
-    b       .Lcpu_sleep
-
-.Lcpu0_initialize:
-    ldr     r0, =__stack
-    // Enter each mode in turn and set up the stack pointer
-#if 0
-    MSR     CPSR_c, #Mode_FIQ:OR:I_Bit:OR:F_Bit
-    MOV     SP, R0
-    SUB     R0, R0, #FIQ_Stack_Size
-    MSR     CPSR_c, #Mode_IRQ:OR:I_Bit:OR:F_Bit
-#endif
-    mov     sp, r0
-
-    // Disable MMU.
-    mrc     p15, 0, r1, c1, c0, 0 // Read Control Register configuration data
-    bic     r1, r1, #0x1
-    mcr     p15, 0, r1, c1, c0, 0 // Write Control Register configuration data
-
-    // Use bl instead of b to have a proper stack record for GDB
-    // to display a full stack trace.
-    bl      _start
-
-#else
-#error "Unsupported architecture."
-#endif
+// ----------------------------------------------------------------------------

@@ -1,9 +1,9 @@
-[![license](https://img.shields.io/github/license/micro-os-plus/devices-qemu-cortexa-xpack)](https://github.com/micro-os-plus/devices-qemu-cortexa-xpack/blob/xpack/LICENSE)
-[![CI on Push](https://github.com/micro-os-plus/devices-qemu-cortexa-xpack/workflows/CI%20on%20Push/badge.svg)](https://github.com/micro-os-plus/devices-qemu-cortexa-xpack/actions?query=workflow%3A%22CI+on+Push%22)
+[![license](https://img.shields.io/github/license/micro-os-plus/devices-qemu-aarch64-xpack)](https://github.com/micro-os-plus/devices-qemu-aarch64-xpack/blob/xpack/LICENSE)
+[![CI on Push](https://github.com/micro-os-plus/devices-qemu-aarch64-xpack/workflows/CI%20on%20Push/badge.svg)](https://github.com/micro-os-plus/devices-qemu-aarch64-xpack/actions?query=workflow%3A%22CI+on+Push%22)
 
-# A source library xPack with the µOS++ QEMU Cortex-A board support files
+# A source library xPack with the µOS++ QEMU AArch64 board support files
 
-QEMU implements several Cortex-A boards, which can be used for running
+QEMU implements several AArch64 boards, which can be used for running
 tests.
 
 - <https://www.qemu.org/docs/master/system/target-arm.html>
@@ -46,20 +46,20 @@ For now, it can be installed from GitHub:
 cd my-project
 xpm init # Unless a package.json is already present
 
-xpm install github:micro-os-plus/devices-qemu-cortexa-xpack
+xpm install github:micro-os-plus/devices-qemu-aarch64-xpack
 ```
 
 When ready, this package will be available as
-[`@micro-os-plus/devices-qemu-cortexa`](https://www.npmjs.com/package/@micro-os-plus/devices-qemu-cortexa)
+[`@micro-os-plus/devices-qemu-aarch64`](https://www.npmjs.com/package/@micro-os-plus/devices-qemu-aarch64)
 from the `npmjs.com` registry:
 
 ```sh
 cd my-project
 xpm init # Unless a package.json is already present
 
-xpm install @micro-os-plus/devices-qemu-cortexa@latest
+xpm install @micro-os-plus/devices-qemu-aarch64@latest
 
-ls -l xpacks/micro-os-plus-devices-qemu-cortexa
+ls -l xpacks/micro-os-plus-devices-qemu-aarch64
 ```
 
 ### Git submodule
@@ -72,8 +72,8 @@ cd my-project
 git init # Unless already a Git project
 mkdir -p xpacks
 
-git submodule add https://github.com/micro-os-plus/devices-qemu-cortexa-xpack.git \
-  xpacks/micro-os-plus-devices-qemu-cortexa-xpack
+git submodule add https://github.com/micro-os-plus/devices-qemu-aarch64-xpack.git \
+  xpacks/micro-os-plus-devices-qemu-aarch64-xpack
 ```
 
 ## Branches
@@ -99,7 +99,7 @@ at any time.
 
 ### Status
 
-The QEMU Cortex-A support is work in progress.
+The QEMU AArch64 support is work in progress.
 
 ### Limitations
 
@@ -142,7 +142,7 @@ The source files to be added to user projects are:
 
 #### Interrupt handlers
 
-Only the standard Cortex-A trap handlers are used.
+Only the standard AArch64 trap handlers are used.
 
 #### C++ Namespaces
 
