@@ -99,7 +99,7 @@ at any time.
 
 ### Status
 
-The QEMU AArch64 support is work in progress.
+The QEMU AArch64 support is functional but minimalistic.
 
 ### Limitations
 
