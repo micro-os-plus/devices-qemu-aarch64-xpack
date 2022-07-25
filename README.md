@@ -1,19 +1,17 @@
 [![license](https://img.shields.io/github/license/micro-os-plus/devices-qemu-aarch64-xpack)](https://github.com/micro-os-plus/devices-qemu-aarch64-xpack/blob/xpack/LICENSE)
-[![CI on Push](https://github.com/micro-os-plus/devices-qemu-aarch64-xpack/workflows/CI%20on%20Push/badge.svg)](https://github.com/micro-os-plus/devices-qemu-aarch64-xpack/actions?query=workflow%3A%22CI+on+Push%22)
+[![CI on Push](https://github.com/micro-os-plus/devices-qemu-aarch64-xpack/actions/workflows/CI.yml/badge.svg)](https://github.com/micro-os-plus/devices-qemu-aarch64-xpack/actions/workflows/CI.yml)
 
 # A source library xPack with the µOS++ QEMU AArch64 board support files
 
-QEMU implements several AArch64 boards, which can be used for running
-tests.
-
-- <https://www.qemu.org/docs/master/system/target-arm.html>
-- <https://www.qemu.org/docs/master/system/arm/virt.html>
-
-This project provides the initialization code required to build
-applications running on these boards.
+This project provides the **device-qemu-aarch64** source library as an xPack
+dependency and includes the initialization code required to build
+applications running on the QEMU AArch64 boards.
 
 It is intended to be included in unit tests, which generally do not
 need peripherals.
+
+The project is hosted on GitHub as
+[micro-os-plus/devices-qemu-aarch64-xpack](https://github.com/micro-os-plus/devices-qemu-aarch64-xpack).
 
 ## Maintainer info
 
@@ -25,7 +23,7 @@ For maintainer info, please see the
 
 ## Install
 
-As a source library xPacks, the easiest way to add it to a project is via
+As a source library xPack, the easiest way to add it to a project is via
 **xpm**, but it can also be used as any Git project, for example as a submodule.
 
 ### Prerequisites
@@ -38,18 +36,7 @@ For details please follow the instructions in the
 
 ### xpm
 
-Note: the package will be available from npmjs.com at a later date.
-
-For now, it can be installed from GitHub:
-
-```sh
-cd my-project
-xpm init # Unless a package.json is already present
-
-xpm install github:micro-os-plus/devices-qemu-aarch64-xpack
-```
-
-When ready, this package will be available as
+This package is available from npmjs.com as
 [`@micro-os-plus/devices-qemu-aarch64`](https://www.npmjs.com/package/@micro-os-plus/devices-qemu-aarch64)
 from the `npmjs.com` registry:
 
@@ -91,15 +78,21 @@ into `xpack`.
 
 ## Developer info
 
-This project can be used as-is for simple tests or blinky projects.
+### Overview
 
-It can also be copied into
-the user project, the configuration updated, and content regenerated,
-at any time.
+QEMU implements several AArch64 boards, which can be used for running
+tests.
+
+- <https://www.qemu.org/docs/master/system/target-arm.html>
+- <https://www.qemu.org/docs/master/system/arm/virt.html>
+
+This project provides the initialization code required to build
+applications running on these boards.
 
 ### Status
 
-The QEMU AArch64 support is functional but minimalistic.
+The **devices-qemu-aarch64** source library is fully functional,
+but minimalistic, for running semihosted tests.
 
 ### Limitations
 
@@ -110,7 +103,16 @@ The current initialisation code does not touch them.
 
 ### Build & integration info
 
-To integrate this package into user projects, consider the following details:
+The project is written in C++ and assembly and it is expected
+to be used in C and C++ projects.
+
+The source code was compiled with aarch64-none-elf-gcc 11
+and should be warning free.
+
+To ease the integration of this package into user projects, there
+are already made CMake and meson configuration files (see below).
+
+For other build systems, consider the following details:
 
 #### Include folders
 
@@ -128,12 +130,13 @@ The header files to be included in user project are:
 
 The source files to be added to user projects are:
 
-- `src/boot.S`
+- `src/reset-handler.S`
+- `src/interrupt-vectors.S`
+- `src/exception-handlers.cpp`
 
 #### Preprocessor definitions
 
-- `MICRO_OS_PLUS_INCLUDE_MICRO_OS_PLUS_DIAG_TRACE` to enable the `trace_printf()`
-  calls in `Error_Handler()` and `assert_failed()`.
+- none
 
 #### Compiler options
 
@@ -151,6 +154,53 @@ Only the standard AArch64 trap handlers are used.
 #### C++ Classes
 
 - none
+
+#### Dependencies
+
+- none
+
+#### CMake
+
+To integrate the devices-qemu-aarch64 source library into a CMake application,
+add this folder to the build:
+
+```cmake
+add_subdirectory("xpacks/micro-os-plus-devices-qemu-aarch64")`
+```
+
+The result is an interface library that can be added as an application
+dependency with:
+
+```cmake
+target_link_libraries(your-target PRIVATE
+
+  micro-os-plus::devices-qemu-aarch64
+)
+```
+
+#### meson
+
+To integrate the devices-qemu-aarch64 source library into a meson application,
+add this folder to the build:
+
+```meson
+subdir('xpacks/micro-os-plus-devices-qemu-aarch64')
+```
+
+The result is a dependency object that can be added
+to an application with:
+
+```meson
+exe = executable(
+  your-target,
+  link_with: [
+    # Nothing, not static.
+  ],
+  dependencies: [
+    micro_os_plus_devices_qemu_aarch64_dependency,
+  ]
+)
+```
 
 ### Examples
 
