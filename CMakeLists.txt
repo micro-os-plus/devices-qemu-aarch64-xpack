@@ -37,7 +37,7 @@ if(COMMAND xpack_get_package_name_and_version)
 endif()
 
 if(NOT xpack_device_compile_definition)
-  message(FATAL_ERROR "Define 'xpack_device_compile_definition' globally before including device-qemu-aarch64")
+  message(FATAL_ERROR "Define 'xpack_device_compile_definition' globally before including devices-qemu-aarch64")
 endif()
 
 # -----------------------------------------------------------------------------
@@ -74,9 +74,6 @@ target_compile_options(micro-os-plus-devices-qemu-aarch64-interface INTERFACE
 target_link_libraries(micro-os-plus-devices-qemu-aarch64-interface INTERFACE
   # Dependencies
   # xpack-3rd-party::arm-cmsis-core-a
-  # micro-os-plus::devices-cortexa
-  # TODO: check if really needed!
-  # micro-os-plus::startup
 )
 
 if (COMMAND xpack_display_target_lists)
