@@ -1,0 +1,28 @@
+{
+  "minimumXpmakeRequired": "0.0.0",
+  "license": "MIT",
+  "copyright": "Copyright (c) 2022 Liviu Ionescu",
+  "description": "Top QEMU aarch64 components",
+  "cdlComponents": {
+    "devices-qemu-aarch64": {
+      "description": "The QEMU AArch64 device definitions.",
+      "parent": "micro-os-plus",
+      "compilerIncludeFolders": [
+        "include"
+      ],
+      "compilerSourceFiles": [
+        "src/reset-handler.S",
+        "src/interrupt-vectors.S",
+        "src/exception-handlers.cpp"
+      ],
+      "$comment": "Clarify how to use the device definition, known in the platform",
+      "compilerDefinitions": [],
+      "compilerOptions": [],
+      "dependencies": [],
+      "generatedDefinition": "MICRO_OS_PLUS_INCLUDE_DEVICES_QEMU_AARCH64",
+      "implementedInterfaces": [
+        "device"
+      ]
+    }
+  }
+}
