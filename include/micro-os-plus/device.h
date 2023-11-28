@@ -26,7 +26,7 @@ extern "C"
 
   // --------------------------------------------------------------------------
 
-#if defined(DEVICE_QEMU_CORTEX_A72)
+#if defined(MICRO_OS_PLUS_DEVICE_QEMU_CORTEX_A72)
 
 // It throws lots of errors, mainly related to truncating integers;
 // perhaps CMSIS does not support 64-bit.
