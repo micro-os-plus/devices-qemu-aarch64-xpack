@@ -233,6 +233,8 @@ backwards incompatible changes are introduced to the public API.
 The incompatible changes, in reverse chronological order,
 are:
 
+- v4.x: use full name MICRO_OS_PLUS_DEVICE_QEMU_CORTEX_A72 macro
+- v3.x: rework as aarch64
 - v2.x: interrupt-vectors & exception-handlers moved here; Reset_Handler
   renamed with capital letters
 - v1.x: initial release
