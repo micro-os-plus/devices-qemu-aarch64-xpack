@@ -6,8 +6,20 @@ Please check
 [GitHub](https://github.com/micro-os-plus/devices-qemu-aarch64-xpack/issues/)
 and close existing issues and pull requests.
 
+## 2025-10-08
+
+* v4.1.0
+* 774cf41 #3: Display exception frame in default trap handler
+* ad99cd9 #2: initialise mmu
+
+## 2025-10-07
+
+* 1446282 update copyright notices
+
 ## 2023-11-28
 
+* 32d1bb0 4.0.0
+* 9d21f8e prepare v4.0.0
 * v4.0.0
 * 2d22a61 device.h: use full name for macro
 * 3c6860c README updates
