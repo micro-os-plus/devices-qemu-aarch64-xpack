@@ -109,7 +109,7 @@ xpm run test-all -C ~/Work/micro-os-plus/devices-qemu-aarch64-xpack.git
 - commit all changes
 - `npm pack` and check the content of the archive, which should list
   only `package.json`, `README.md`, `LICENSE`, `CHANGELOG.md`,
-  the sources and CMake/meson files;
+  the sources, includes and CMake/meson files;
   possibly adjust `.npmignore`
 - `npm version patch`, `npm version minor`, `npm version major`
 - push the `xpack-development` branch to GitHub
