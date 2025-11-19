@@ -8,7 +8,10 @@ and close existing issues and pull requests.
 
 ## 2025-11-19
 
-* v4.1.1
+* f5d8e09 package.json update
+* 5034bdc README update
+* a609872 create xpack-development
+* d166d42 prepare v4.1.1
 * a3ffe71 reset-handler.S add unaligned access test & cosmetise
 
 ## 2025-10-08
