@@ -6,9 +6,15 @@ Please check
 [GitHub](https://github.com/micro-os-plus/devices-qemu-aarch64-xpack/issues/)
 and close existing issues and pull requests.
 
+## 2025-11-19
+
+* v4.1.1
+* a3ffe71 reset-handler.S add unaligned access test & cosmetise
+
 ## 2025-10-08
 
-* v4.1.0
+* 594de43 4.1.0
+* 4cff65a prepare v4.1.0
 * 774cf41 #3: Display exception frame in default trap handler
 * ad99cd9 #2: initialise mmu
 
