@@ -42,6 +42,7 @@ void
 common_trap_handler (exception_frame* ef)
 {
   // TODO
+  trace::printf("\n\n");
   trace::printf("exception type: %d\n", ef->exc_type);
   trace::printf("esr: %p\n", ef->exc_esr);
   trace::printf("sp: %p\n", ef->exc_sp);
