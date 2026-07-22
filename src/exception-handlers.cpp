@@ -15,15 +15,7 @@
 
 // ----------------------------------------------------------------------------
 
-#if __has_include(<micro-os-plus/project-config.h>)
-#include <micro-os-plus/project-config.h>
-#elif __has_include(<micro-os-plus/config.h>)
-#pragma message "micro-os-plus/config.h is deprecated, rename to micro-os-plus/project-config.h and include it instead of micro-os-plus/config.h"
-#include <micro-os-plus/config.h>
-#endif // __has_include(<micro-os-plus/project-config.h>)
-
-// #include <micro-os-plus/device.h>
-#include <micro-os-plus/architecture-aarch64/exception-handlers.h>
+#include <micro-os-plus/device.h>
 
 #include <micro-os-plus/diag/trace.h>
 
@@ -45,15 +37,15 @@ void
 common_trap_handler (exception_frame* ef)
 {
   // TODO
-  trace::printf("\n\n");
-  trace::printf("exception type: %d\n", ef->exc_type);
-  trace::printf("esr: %p\n", ef->exc_esr);
-  trace::printf("sp: %p\n", ef->exc_sp);
-  trace::printf("elr: %d\n", ef->exc_elr);
-  trace::printf("spsr: %d\n", ef->exc_spsr);
+  trace::printf ("\n\n");
+  trace::printf ("exception type: %d\n", ef->exc_type);
+  trace::printf ("esr: %p\n", ef->exc_esr);
+  trace::printf ("sp: %p\n", ef->exc_sp);
+  trace::printf ("elr: %d\n", ef->exc_elr);
+  trace::printf ("spsr: %d\n", ef->exc_spsr);
 
-  while(1)
-	;
+  while (1)
+    ;
 
   return;
 }
