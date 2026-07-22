@@ -1,0 +1,33 @@
+{
+  "$schema": "https://xpack.github.io/xcdl/schemas/xcdl-2.0.0.json",
+  "minimumXcdlRequired": "2.0.0",
+  "license": "MIT",
+  "copyright": "Copyright (c) 2022-2026 Liviu Ionescu. All rights reserved.",
+  "description": "Top QEMU aarch64 components",
+  "cdlComponents": [
+    {
+      "id": "micro-os-plus.devices.qemu-aarch64",
+      "alias": "micro-os-plus.device",
+      "description": "The QEMU AArch64 device definitions",
+      "publicIncludeFolders": [
+        "include"
+      ],
+      "sourceFiles": [
+        "src/reset-handler.S",
+        "src/interrupt-vectors.S",
+        "src/exception-handlers.cpp"
+      ],
+      "$comment": "Clarify how to use the device definition, known in the platform",
+      "dependencies": [
+        "micro-os-plus.diag.trace",
+        "micro-os-plus.architecture",
+        // This introduces a circular dependency.
+        // "micro-os-plus.semihosting",
+      ],
+      "implementedInterfaces": [
+        "micro-os-plus.devices.interface"
+      ],
+      // "customDefine": "MICRO_OS_PLUS_INCLUDE_DEVICES_QEMU_AARCH64_ENABLED"
+    }
+  ]
+}
