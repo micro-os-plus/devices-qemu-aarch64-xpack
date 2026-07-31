@@ -8,7 +8,8 @@
     {
       "id": "micro-os-plus.devices.qemu-aarch64",
       "alias": "micro-os-plus.device",
-      "description": "The QEMU AArch64 device definitions",
+      "display": "QEMU AArch64 devices",
+      "description": "The QEMU AArch64 devices definitions",
       "publicIncludeFolders": [
         "include"
       ],
@@ -25,9 +26,26 @@
         // "micro-os-plus.semihosting",
       ],
       "implementedInterfaces": [
-        "micro-os-plus.devices.interface"
+        "micro-os-plus.device"
       ],
-      // "customDefine": "MICRO_OS_PLUS_INCLUDE_DEVICES_QEMU_AARCH64_ENABLED"
+      "generatedFile": {
+        "type": "c-header",
+        "filePath": "{{buildFolderPath}}/generated/include/micro-os-plus/device-defines.h"
+      },
+      // "customDefine": "MICRO_OS_PLUS_INCLUDE_DEVICES_QEMU_AARCH64_ENABLED",
+      "cdlOptions": [
+        {
+          "id": "core",
+          "display": "CPU core",
+          "description": "Select the QEMU AArch64 CPU",
+          "valueType": "string",
+          "legalValues": [
+            "a72"
+          ],
+          "customDefine": "MICRO_OS_PLUS_DEVICE_QEMU_CORTEX"
+          // "MICRO_OS_PLUS_DEVICE_QEMU_CORTEX_A72"
+        }
+      ]
     }
   ]
 }
