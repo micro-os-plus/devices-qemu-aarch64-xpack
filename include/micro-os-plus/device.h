@@ -20,28 +20,26 @@
 #endif
 #endif // defined(__cplusplus)
 
-#if __has_include(<micro-os-plus/project-config.h>)
-#include <micro-os-plus/project-config.h>
-#elif __has_include(<micro-os-plus/config.h>)
-#pragma message \
-    "micro-os-plus/config.h is deprecated, rename to micro-os-plus/project-config.h and include it instead of micro-os-plus/config.h"
-#include <micro-os-plus/config.h>
-#endif // __has_include(<micro-os-plus/project-config.h>)
+#if __has_include("micro-os-plus/project-config.h")
+#include "micro-os-plus/project-config.h"
+#endif // __has_include("micro-os-plus/project-config.h")
 
-#if __has_include(<micro-os-plus/device-defines.h>)
-#include <micro-os-plus/device-defines.h>
-#endif // __has_include(<micro-os-plus/device-defines.h>)
-
-#include <micro-os-plus/architecture.h>
-
-#include <micro-os-plus/architecture-aarch64/exception-handlers.h>
+#if __has_include("micro-os-plus/device-defines.h")
+#include "micro-os-plus/device-defines.h"
+#endif // __has_include("micro-os-plus/device-defines.h")
 
 // ----------------------------------------------------------------------------
 
-#ifdef __cplusplus
+#include "micro-os-plus/architecture.h"
+
+#include "micro-os-plus/architecture-aarch64/exception-handlers.h"
+
+// ----------------------------------------------------------------------------
+
+#if defined(__cplusplus)
 extern "C"
 {
-#endif /* __cplusplus */
+#endif // defined(__cplusplus)
 
   // --------------------------------------------------------------------------
 
@@ -67,14 +65,15 @@ typedef enum
 #define GIC_INTERFACE_BASE 0xF100
 #define TIMER_BASE 0xF200
 
+#if defined(__GNUC__))
 #pragma GCC diagnostic push
-#ifdef __cplusplus
+#if defined(__cplusplus)
 //#pragma GCC diagnostic ignored "-Wuseless-cast"
 //#pragma GCC diagnostic ignored "-Wold-style-cast"
 //#pragma GCC diagnostic ignored "-Wvolatile"
 #else
 #pragma GCC diagnostic ignored "-Wpointer-to-int-cast"
-#endif
+#endif // defined(__cplusplus)
 #pragma GCC diagnostic ignored "-Wconversion"
 #pragma GCC diagnostic ignored "-Wsign-conversion"
 #pragma GCC diagnostic ignored "-Wsign-compare"
@@ -82,16 +81,19 @@ typedef enum
 #pragma GCC diagnostic ignored "-Wunused-variable"
 #pragma GCC diagnostic ignored "-Wpadded"
 #pragma GCC diagnostic ignored "-Warith-conversion"
+#endif // defined(__GNUC__)
 
 #include "core_ca.h"
 
+#if defined(__GNUC__))
 #pragma GCC diagnostic pop
+#endif // defined(__GNUC__)
 
-#endif
+#endif // 0-1
 
 #else
 #error "Device not supported"
-#endif
+#endif // defined(MICRO_OS_PLUS_DEVICE_QEMU_CORTEX_*)
 
 #if 0
   extern uint32_t SystemCoreClock; /*!< System Clock Frequency (Core Clock) */
@@ -100,13 +102,13 @@ typedef enum
   SystemInit (void);
   extern void
   SystemCoreClockUpdate (void);
-#endif
+#endif // 0-1
 
   // --------------------------------------------------------------------------
 
-#ifdef __cplusplus
+#if defined(__cplusplus)
 }
-#endif /* __cplusplus */
+#endif // defined(__cplusplus)
 
 // ----------------------------------------------------------------------------
 

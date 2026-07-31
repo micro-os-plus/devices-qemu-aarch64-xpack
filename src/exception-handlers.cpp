@@ -15,9 +15,9 @@
 
 // ----------------------------------------------------------------------------
 
-#include <micro-os-plus/device.h>
+#include "micro-os-plus/device.h"
 
-#include <micro-os-plus/diag/trace.h>
+#include "micro-os-plus/diag/trace.h"
 
 // #include <string.h>
 
@@ -38,11 +38,11 @@ common_trap_handler (exception_frame* ef)
 {
   // TODO
   trace::printf ("\n\n");
-  trace::printf ("exception type: %d\n", ef->exc_type);
-  trace::printf ("esr: %p\n", ef->exc_esr);
-  trace::printf ("sp: %p\n", ef->exc_sp);
-  trace::printf ("elr: %d\n", ef->exc_elr);
-  trace::printf ("spsr: %d\n", ef->exc_spsr);
+  trace::printf ("exception type: %d\n", static_cast<int> (ef->exc_type));
+  trace::printf ("esr: %p\n", reinterpret_cast<void*> (ef->exc_esr));
+  trace::printf ("sp: %p\n", reinterpret_cast<void*> (ef->exc_sp));
+  trace::printf ("elr: %p\n", reinterpret_cast<void*> (ef->exc_elr));
+  trace::printf ("spsr: %d\n", static_cast<int> (ef->exc_spsr));
 
   while (1)
     ;

@@ -19,7 +19,7 @@
 #if defined(__cplusplus)
 extern "C"
 {
-#endif
+#endif // defined(__cplusplus)
 
 #if defined(__ARM_ARCH_8A)
 
@@ -118,7 +118,7 @@ extern "C"
 
 #if defined(__cplusplus)
 }
-#endif
+#endif // defined(__cplusplus)
 
 // ----------------------------------------------------------------------------
 
