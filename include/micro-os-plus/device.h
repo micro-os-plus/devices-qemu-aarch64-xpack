@@ -67,6 +67,7 @@ typedef enum
 
 #if defined(__GNUC__))
 #pragma GCC diagnostic push
+
 #if defined(__cplusplus)
 //#pragma GCC diagnostic ignored "-Wuseless-cast"
 //#pragma GCC diagnostic ignored "-Wold-style-cast"
