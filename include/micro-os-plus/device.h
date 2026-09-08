@@ -32,7 +32,11 @@
 
 #include "micro-os-plus/architecture.h"
 
+#if !defined(__ASSEMBLY__)
+
 #include "micro-os-plus/architecture-aarch64/exception-handlers.h"
+
+#endif // !defined(__ASSEMBLY__)
 
 // ----------------------------------------------------------------------------
 
