@@ -6,9 +6,29 @@ Please check
 [GitHub](https://github.com/micro-os-plus/devices-qemu-aarch64-xpack/issues/)
 and close existing issues and pull requests.
 
+## 2026-09-09
+
+* v5.0.1
+* 644b142 re-format
+
+## 2026-09-08
+
+* 7be36bb device.h __ASSEMBLY__
+
+## 2026-09-07
+
+* c82acb2 cosmetise linker scripts
+* 7dadeff cosmetics xpm packages
+
+## 2026-08-05
+
+* 8607d00 #pragma ... push cosmetics
+* 87e601d readme cosmetics
+
 ## 2026-08-04
 
-* v5.0.0
+* 404f447 5.0.0
+* 0e88ca9 prepare v5.0.0
 * 426c23b re-generate top commons
 
 ## 2026-07-31
