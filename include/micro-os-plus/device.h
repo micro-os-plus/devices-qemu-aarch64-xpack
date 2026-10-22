@@ -32,11 +32,11 @@
 
 #include "micro-os-plus/architecture.h"
 
-#if !defined(__ASSEMBLY__)
+#if !defined(__ASSEMBLER__)
 
 #include "micro-os-plus/architecture-aarch64/exception-handlers.h"
 
-#endif // !defined(__ASSEMBLY__)
+#endif // !defined(__ASSEMBLER__)
 
 // ----------------------------------------------------------------------------
 
@@ -47,7 +47,7 @@ extern "C"
 
   // --------------------------------------------------------------------------
 
-#if defined(MICRO_OS_PLUS_DEVICE_QEMU_CORTEX_A72)
+#if defined(MICRO_OS_PLUS_DEVICE_QEMU_CORTEX_CORE_A72)
 
 // It throws lots of errors, mainly related to truncating integers;
 // perhaps CMSIS does not support 64-bit.
@@ -98,7 +98,7 @@ typedef enum
 
 #else
 #error "Device not supported"
-#endif // defined(MICRO_OS_PLUS_DEVICE_QEMU_CORTEX_*)
+#endif // defined(MICRO_OS_PLUS_DEVICE_QEMU_CORTEX_CORE_*)
 
 #if 0
   extern uint32_t SystemCoreClock; /*!< System Clock Frequency (Core Clock) */

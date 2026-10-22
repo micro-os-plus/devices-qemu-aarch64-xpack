@@ -23,7 +23,7 @@ extern "C"
 
 #if defined(__ARM_ARCH_8A)
 
-#if !defined(__ASSEMBLY__)
+#if !defined(__ASSEMBLER__)
 
   // For non assembly uses, define the exception frame used to
   // store registers when entering interrupts.
@@ -70,7 +70,7 @@ extern "C"
     uint64_t x30;
   } exception_frame;
 
-#endif // !defined(__ASSEMBLY__)
+#endif // !defined(__ASSEMBLER__)
 
 // Definitions used in assembly.
 

@@ -15,7 +15,8 @@
 
 // ----------------------------------------------------------------------------
 
-#define __ASSEMBLY__ 1
+// Defined by the compiler for .S files.
+// #define __ASSEMBLER__ 1
 #include "micro-os-plus/architecture-aarch64/exception-handlers.h"
 
 // ----------------------------------------------------------------------------
