@@ -19,7 +19,7 @@
 # This creates libraries that can be linked to a target with:
 #
 # ~~~
-# target_link_libraries(your-target PUBLIC micro-os-plus::devices-qemu-aarch64)
+# target_link_libraries(your-target PUBLIC micro-os-plus::device-qemu-aarch64)
 # ~~~
 
 # -----------------------------------------------------------------------------
@@ -66,26 +66,26 @@ endif ()
 # Visibility keywords: PRIVATE applies to the target itself; INTERFACE passes
 # properties up to targets that link against it; PUBLIC does both.
 add_library (
-  micro-os-plus-devices-qemu-aarch64-interface INTERFACE EXCLUDE_FROM_ALL
+  micro-os-plus-device-qemu-aarch64-interface INTERFACE EXCLUDE_FROM_ALL
 )
 
 target_include_directories (
-  micro-os-plus-devices-qemu-aarch64-interface INTERFACE "include"
+  micro-os-plus-device-qemu-aarch64-interface INTERFACE "include"
 )
 
 target_sources (
-  micro-os-plus-devices-qemu-aarch64-interface
+  micro-os-plus-device-qemu-aarch64-interface
   INTERFACE "src/reset-handler.S" "src/interrupt-vectors.S"
             "src/exception-handlers.cpp"
 )
 
 target_link_libraries (
-  micro-os-plus-devices-qemu-aarch64-interface
+  micro-os-plus-device-qemu-aarch64-interface
   INTERFACE "micro-os-plus::diag-trace" "micro-os-plus::architecture"
 )
 
 if (COMMAND xpack_display_target_lists)
-  xpack_display_target_lists (micro-os-plus-devices-qemu-aarch64-interface)
+  xpack_display_target_lists (micro-os-plus-device-qemu-aarch64-interface)
 endif ()
 
 # -----------------------------------------------------------------------------
@@ -93,20 +93,12 @@ endif ()
 
 # https://cmake.org/cmake/help/v3.20/command/add_library.html#alias-libraries
 add_library (
-  micro-os-plus::devices-qemu-aarch64 ALIAS
-  micro-os-plus-devices-qemu-aarch64-interface
+  micro-os-plus::device-qemu-aarch64 ALIAS
+  micro-os-plus-device-qemu-aarch64-interface
 )
 message (
   VERBOSE
-  "> micro-os-plus::devices-qemu-aarch64 -> micro-os-plus-devices-qemu-aarch64-interface"
-)
-
-add_library (
-  micro-os-plus::device ALIAS micro-os-plus-devices-qemu-aarch64-interface
-)
-message (
-  VERBOSE
-  "> micro-os-plus::device -> micro-os-plus-devices-qemu-aarch64-interface"
+  "> micro-os-plus::device-qemu-aarch64 -> micro-os-plus-device-qemu-aarch64-interface"
 )
 
 # -----------------------------------------------------------------------------

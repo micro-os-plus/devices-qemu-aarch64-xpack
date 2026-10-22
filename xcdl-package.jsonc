@@ -6,8 +6,7 @@
   "description": "Top QEMU aarch64 components",
   "cdlComponents": [
     {
-      "id": "micro-os-plus.devices.qemu-aarch64",
-      "alias": "micro-os-plus.device",
+      "id": "micro-os-plus.device.qemu-aarch64",
       "display": "QEMU AArch64 devices",
       "description": "The QEMU AArch64 devices definitions",
       "publicIncludeFolders": [
@@ -42,8 +41,8 @@
           "legalValues": [
             "a72"
           ],
-          "customDefine": "MICRO_OS_PLUS_DEVICE_QEMU_CORTEX"
-          // "MICRO_OS_PLUS_DEVICE_QEMU_CORTEX_A72"
+          "customDefine": "MICRO_OS_PLUS_DEVICE_QEMU_CORTEX_CORE"
+          // "MICRO_OS_PLUS_DEVICE_QEMU_CORTEX_CORE_A72"
         }
       ]
     }
