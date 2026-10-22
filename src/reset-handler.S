@@ -88,12 +88,13 @@ Reset_Handler:
     orr    x0, x0, #(0x1 << 23)     // EPD1 = 1 (Disable TTBR1_EL1)
     msr    tcr_el1, x0
 
-    // Create page tables for transparent mapping
-    // Use a fixed address for page tables in RAM (QEMU RAM starts at 0x40000000)
-    ldr    x1, =0x40100000          // Page tables at safe RAM offset
+    // Create page tables for transparent mapping.
+    // The tables are reserved in the .noinit section (below), so they
+    // never overlap the application image, regardless of its size.
+    adrp   x1, page_tables          // Page tables base (4KB aligned)
 
-    // Clear page table memory (8KB for L1 + L2 tables)
-    mov    x2, #0x2000              // 8KB
+    // Clear page table memory (12KB for L1 + 2 x L2 tables)
+    mov    x2, #0x3000              // 12KB
     mov    x3, #0
 
 .Lclear_tables:
@@ -102,7 +103,7 @@ Reset_Handler:
     bne    .Lclear_tables
 
     // --- Reset base address ---
-    ldr    x1, =0x40100000          // Reset to page table base
+    adrp   x1, page_tables          // Reset to page table base
 
     // --- Setup L1 and L2 tables ---
     // We will use a single L2 table pointed to by the first L1 entry.
@@ -134,7 +135,7 @@ Reset_Handler:
     // L1 index for 0x40000000 is (0x40000000 >> 30) = 1.
 
     // -- Reset L1 base address ---
-    ldr    x1, =0x40100000
+    adrp   x1, page_tables          // Reset to page table base
 
     // L1 entry 1: points to L2 table for the 0x40000000 region
     add    x2, x1, #0x2000          // L2 table at L1_base + 8KB
@@ -162,7 +163,7 @@ Reset_Handler:
     bne    .Lmap_ram
 
     // --- Reset base address to L1 table ---
-    ldr    x1, =0x40100000          // Reset to page table base
+    adrp   x1, page_tables          // Reset to page table base
 
     // Ensure page table writes are complete.
     dsb    sy
@@ -207,6 +208,21 @@ Reset_Handler:
     // Use bl instead of b to have a proper stack record for GDB
     // to display a full stack trace.
     bl     _start
+
+// ----------------------------------------------------------------------------
+
+    // MMU translation tables: one L1 table, one L2 table for the first
+    // 1GB (peripherals), and one L2 table for the RAM, 4KB each.
+    // Placed in .noinit, since the startup code clears .bss after the
+    // MMU is enabled, which would destroy the live tables; the reset
+    // handler clears them itself before use.
+    .section .noinit.page_tables,"aw",%nobits
+
+    .balign 4096
+    .type page_tables, %object
+page_tables:
+    .space 0x3000
+    .size page_tables, . - page_tables
 
 // ----------------------------------------------------------------------------
 
