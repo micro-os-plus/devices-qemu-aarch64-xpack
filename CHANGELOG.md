@@ -6,9 +6,21 @@ Please check
 [GitHub](https://github.com/micro-os-plus/devices-qemu-aarch64-xpack/issues/)
 and close existing issues and pull requests.
 
+## 2026-11-07
+
+* v6.0.0
+* 754add4 re-generate top commons
+
+## 2026-10-22
+
+* 4c57cfc reset-handler.S: initialise past 1 MB
+* 40f295e device.qemu-aarch64 (singular)
+* df89eac __ASSEMBLER__ updates
+
 ## 2026-09-09
 
-* v5.0.1
+* 36504fc 5.0.1
+* 260f34b prepare v5.0.1
 * 644b142 re-format
 
 ## 2026-09-08
